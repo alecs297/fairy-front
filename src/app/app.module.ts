@@ -11,8 +11,9 @@ import { AccountComponent } from './components/account/account.component';
 import { ProfileComponent } from './components/account/profile/profile.component';
 import { SettingsComponent } from './components/account/settings/settings.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
-import { NoteComponent } from './components/dashboard/note/note.component';
+import { SplitComponent } from './components/dashboard/split/split.component';
 import { HomeComponent } from './components/home/home.component';
+import { TransactionComponent } from './components/dashboard/split/transaction/transaction.component';
 
 @NgModule({
   declarations: [
@@ -25,8 +26,9 @@ import { HomeComponent } from './components/home/home.component';
     ProfileComponent,
     SettingsComponent,
     DashboardComponent,
-    NoteComponent,
-    HomeComponent
+    SplitComponent,
+    HomeComponent,
+    TransactionComponent
   ],
   imports: [
     BrowserModule,
