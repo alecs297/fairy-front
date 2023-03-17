@@ -35,6 +35,10 @@ export class AuthService {
     return null;
   }
 
+  public changePassword(password: string, newPassword: string): string | null {
+    return null;
+  }
+
   public logout(): void {
 
   }

@@ -25,7 +25,7 @@ export class LoginComponent {
 
   async login(): Promise<void> {
     const creds = this.loginForm.value;
-    let message: string | null = await this.authService.login(creds.username || "", creds.password || "");
+    let message: string | null = this.authService.login(creds.username || "", creds.password || "");
     if (message) {
       this.errorMessage = message;
     } else {
