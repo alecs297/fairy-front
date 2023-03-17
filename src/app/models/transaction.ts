@@ -1,14 +1,12 @@
-import User from "./user";
-
 export default interface Transaction {
     id: string;
     name: string;
     description: string;
     amount: number;
     date: Date;
-    payer: User;
+    payer: string;
     shares: {
-        user: User;
+        user: string;
         amount: number;
     }[];
 }

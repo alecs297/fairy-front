@@ -1,5 +1,3 @@
-import User from "./user";
-
 export default interface Split {
     id: string;
     url: string;
@@ -7,5 +5,4 @@ export default interface Split {
     date: Date;
     description: string;
     image: string;
-    user: User;
 }
