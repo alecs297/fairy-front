@@ -3,7 +3,7 @@
         <h1 class="font-bold tracking-tight text-3xl lg:text-5xl">Register</h1>
         <h2 class="font-semibold tracking-tight text-2xl lg:text-4xl text-text-tertiary">Nice to meet you !</h2>
         <p class="py-2">Already have an account ? You can <a href="/login" class="underline text-text-secondary underline-offset-4">login</a> instead.</p>
-        <form class="w-full py-2" [formGroup]="registerForm" (ngSubmit)="register">
+        <form class="w-full py-2" [formGroup]="registerForm" (ngSubmit)="register()">
             <label class="block w-full py-3">
                 <span class="font-semibold text-xl lg:text-2xl">Username</span>
                 <input class="text-xl lg:text-2xl block w-full border rounded-md border-text-default" type="text" formControlName="username"/>
@@ -17,6 +17,7 @@
                 <input class="text-xl lg:text-2xl block w-full border rounded-md border-text-default" type="pasword" formControlName="password"/>
             </label>
             <button class="w-full text-xl lg:text-2xl text-bg-default bg-text-tertiary font-bold py-2 rounded-md" type="submit">Register</button>
+            <p class="text-text-secondary" *ngIf="errorMessage">{{errorMessage}}</p>
         </form>
     </div>
 </div>
