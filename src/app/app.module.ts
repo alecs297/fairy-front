@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { ReactiveFormsModule } from '@angular/forms';
 
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/shared/navbar/navbar.component';
@@ -15,6 +17,9 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { SplitComponent } from './components/dashboard/split/split.component';
 import { HomeComponent } from './components/home/home.component';
 import { TransactionComponent } from './components/dashboard/split/transaction/transaction.component';
+import { AuthService } from './services/auth.service';
+import { HttpService } from './services/http.service';
+import { InterceptorService } from './services/interceptor.service';
 
 @NgModule({
   declarations: [
@@ -34,9 +39,16 @@ import { TransactionComponent } from './components/dashboard/split/transaction/t
   imports: [
     BrowserModule,
     AppRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [
+    AuthService, HttpService, {
+      provide: HTTP_INTERCEPTORS,
+      useClass: InterceptorService, 
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
