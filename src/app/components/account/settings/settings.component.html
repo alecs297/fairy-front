@@ -1,1 +1,14 @@
-<p>settings works!</p>
+<div class="w-full">
+    <form class="w-full" [formGroup]="settingsForm">
+        <p class="text-2xl font-semibold tracking-tighter mt-12 mb-2 px-4">Change your account's password</p>
+        <label class="w-1/2 px-4 inline-block">
+            Current Password
+            <input class="block border rounded-sm w-full" type="password" formControlName="password" />
+        </label>
+        <label class="w-1/2 px-4 inline-block">
+            New Password
+            <input class="block border rounded-sm w-full" type="password" formControlName="newPassword" />
+        </label>
+    </form>
+    <a class="text-text-secondary text-2xl font-semibold tracking-tighter my-12 inline-block px-4" href="/logout">Log out</a>
+</div>
