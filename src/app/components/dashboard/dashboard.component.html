@@ -3,5 +3,9 @@
     <div class="inline-flex mx-4 align-sub">
         <span class="w-8 h-8 text-xl font-bold cursor-pointer text-bg-default hover:border bg-text-secondary hover:bg-bg-default hover:text-text-secondary rounded-full text-center">+</span>
     </div>
-    <app-split *ngFor="let split of splits"></app-split>
+    <ul>
+        <li *ngFor="let split of splits">
+            <a [routerLink]="['/dashboard', split.id]">{{split.name}}</a>
+        </li>
+    </ul>
 </div>
