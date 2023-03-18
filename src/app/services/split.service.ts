@@ -15,4 +15,20 @@ export class SplitService {
   getSplits(): Observable<Split[]> {
     return this.http.get<Split[]>(this.API_URL);
   }
+
+  getSplit(id: string): Observable<Split> {
+    return this.http.get<Split>(`${this.API_URL}/${id}`);
+  }
+
+  createSplit(split: Split): Observable<Split> {
+    return this.http.post<Split>(this.API_URL, split);
+  }
+
+  updateSplit(split: Split): Observable<Split> {
+    return this.http.put<Split>(`${this.API_URL}/${split.id}`, split);
+  }
+
+  deleteSplit(id: string): Observable<Split> {
+    return this.http.delete<Split>(`${this.API_URL}/${id}`);
+  }
 }

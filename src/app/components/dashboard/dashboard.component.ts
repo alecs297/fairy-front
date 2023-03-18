@@ -18,4 +18,12 @@ export class DashboardComponent {
       }
     });
   }
+
+  deleteSplit(id: string): void {
+    this.SplitService.deleteSplit(id).subscribe({
+      next: () => {
+        this.splits = this.splits.filter(s => s.id !== id);
+      }
+    });
+  }
 }

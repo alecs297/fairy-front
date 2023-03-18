@@ -1,1 +1,29 @@
-<p>split works!</p>
+<div class="w-full lg:w-3/4 mx-auto">
+    <a class="text-xl lg:text-2xl font-semibold text-text-secondary tracking-tighter" href="/dashboard">◃ <span class="underline underline-offset-4">Back to the dashboard</span></a>
+    <div class="w-full">
+        <div class="w-full py-2">
+            <input class="w-full py-2 px-4 border" placeholder="Title" [value]="split?.name" />
+            <textarea class="w-full py-2 px-4 border" placeholder="Description" [value]="split?.description"></textarea>
+        </div>
+        <div class="w-full py-2">
+            <h2>Users</h2>
+            <ul>
+                <li *ngFor="let user of split?.users">
+                    <input class="w-full py-2 px-4 border" [value]="user" />
+                </li>
+                <input placeholder="Add user" class="w-full py-2 px-4 border"/>
+            </ul>
+        </div>
+        <div class="w-full py-2">
+            <h2>Transactions</h2>
+            
+            <ul>
+                <li *ngFor="let user of split?.users">
+                    <app-transaction></app-transaction>
+                </li>
+            </ul>
+        </div>
+    </div>
+    
+
+</div>
