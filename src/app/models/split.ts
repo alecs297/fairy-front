@@ -5,8 +5,6 @@ export default interface Split {
     url: string;
     name: string;
     date: Date;
-    description: string;
-    image: string;
     transactions: Transaction[]
     users: string[];
 }

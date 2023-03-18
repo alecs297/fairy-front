@@ -13,7 +13,7 @@ export class SettingsComponent {
     newPassword: new FormControl('')
   })
 
-  constructor(private AuthService: AuthService, private router: Router) {}
+  constructor(private AuthService: AuthService) {}
 
   message: string | null = null;
 

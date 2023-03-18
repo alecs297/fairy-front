@@ -20,7 +20,11 @@ export class AuthService {
   }
 
   public getUser(): User | null {
-    return null;
+    return {
+      username: 'test',
+      name: 'Test User',
+      badges: []
+    };
   }
 
   getToken(): string | null {

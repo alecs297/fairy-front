@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
@@ -9,7 +8,7 @@ import { AuthService } from 'src/app/services/auth.service';
 export class NavbarComponent {
   isAuthenticated: boolean = false;
 
-  constructor(private AuthService: AuthService, private router: Router) {}
+  constructor(private AuthService: AuthService) {}
 
   ngOnInit(): void {
     this.isAuthenticated = this.AuthService.isAuthenticated();

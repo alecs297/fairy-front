@@ -10,11 +10,9 @@ export class ProfileComponent {
 
   constructor(private authService: AuthService) { }
 
-  user = this.authService.getUser() || {
-    username: "Loading",
-    name: "loading",
-    badges: [],
-    image: "Loading..."
-    
-  };
+  user: User | null = null;
+
+  ngOnInit(): void {
+    this.user = this.authService.getUser();
+  }
 }
