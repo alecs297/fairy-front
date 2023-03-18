@@ -1,25 +1,29 @@
-<div class="w-full lg:w-3/4 mx-auto">
-    <a class="text-xl lg:text-2xl font-semibold text-text-secondary tracking-tighter" href="/dashboard">◃ <span class="underline underline-offset-4">Back to the dashboard</span></a>
+<div class="w-full lg:w-1/2 mx-auto">
+    <a routerLink=".." class="text-xl lg:text-2xl font-semibold text-text-secondary tracking-tighter">◃ <span class="underline underline-offset-4">Back to the dashboard</span></a>
     <div class="w-full">
-        <div class="w-full py-2">
-            <input class="w-full py-2 px-4 border" placeholder="Title" [value]="split?.name" />
-            <textarea class="w-full py-2 px-4 border" placeholder="Description" [value]="split?.description"></textarea>
+        <div class="w-full font-bold tracking-tighter py-2 text-3xl lg:text-5xl">
+            <input class="my-2 py-2 px-2 outline-none border-b-2" placeholder="Title" [value]="split?.name" />
         </div>
-        <div class="w-full py-2">
-            <h2>Users</h2>
-            <ul>
+        <div class="w-full py-4 px-2">
+            <h2 class="font-bold tracking-tighter text-2xl lg:text-4xl">Members</h2>
+            <ul class="px-2 py-2 text-2xl tracking-tight">
+                <input class="w-full lg:w-1/3 cursor-not-allowed py-1 outline-none hover:font-semibold focus:font-semibold border-b border-b-bg-default focus:border-b-text-default" disabled [value]="user?.name + ' (You)'" />
                 <li *ngFor="let user of split?.users">
-                    <input class="w-full py-2 px-4 border" [value]="user" />
+                    <input class="w-full lg:w-1/3 py-1 outline-none hover:font-semibold focus:font-semibold border-b border-b-bg-default focus:border-b-text-default" [value]="user" />
                 </li>
-                <input placeholder="Add user" class="w-full py-2 px-4 border"/>
+                <li>
+                    <input placeholder="New member" class="w-full lg:w-1/3 py-1 outline-none border-b border-b-bg-default focus:border-b-text-default"/>
+                </li>
             </ul>
         </div>
-        <div class="w-full py-2">
-            <h2>Transactions</h2>
-            
+        <div class="w-full py-4">
+            <h2 class="inline-block font-bold tracking-tighter text-2xl lg:text-4xl align-middle">Transactions</h2>
+            <div class="inline-flex mx-2 align-sub">
+                <span class="w-6 h-6 text-md font-bold cursor-pointer text-bg-default hover:border bg-text-secondary hover:bg-bg-default hover:text-text-secondary rounded-full text-center">+</span>
+            </div>
             <ul>
-                <li *ngFor="let user of split?.users">
-                    <app-transaction></app-transaction>
+                <li *ngFor="let transaction of split?.transactions">
+                    <app-transaction [transaction]="transaction"></app-transaction>
                 </li>
             </ul>
         </div>

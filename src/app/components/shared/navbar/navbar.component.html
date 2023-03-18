@@ -1,6 +1,6 @@
 <div class="w-full flex px-8 py-4 h-[10vh]">
-    <a href="/" class="select-none cursor-pointer text-3xl md:text-5xl tracking-tighter font-bold text-text-tertiary">Fairy</a>
+    <a routerLink="/" class="select-none cursor-pointer text-3xl md:text-5xl tracking-tighter font-bold text-text-tertiary">Fairy</a>
     <div class="flex-grow"></div>
-    <a *ngIf="isAuthenticated" class="text-xl md:text-3xl font-bold px-3 rounded-tl-md rounded-br-md text-text-secondary hover:bg-text-secondary hover:text-bg-default tracking-tight" href="/dashboard">Dashboard</a>
-    <a class="text-xl md:text-3xl font-bold px-3 rounded-tl-md rounded-br-md text-text-tertiary underline underline-offset-8 hover:bg-text-tertiary hover:text-bg-default hover:no-underline tracking-tight" href="{{isAuthenticated ? '/account' : '/login'}}">{{ isAuthenticated ? "Account" : "Login"}}</a>
+    <a *ngIf="isAuthenticated" class="text-xl md:text-3xl font-bold px-3 rounded-tl-md rounded-br-md text-text-secondary hover:bg-text-secondary hover:text-bg-default tracking-tight" routerLink="/dashboard">Dashboard</a>
+    <a class="text-xl md:text-3xl font-bold px-3 rounded-tl-md rounded-br-md text-text-tertiary underline underline-offset-8 hover:bg-text-tertiary hover:text-bg-default hover:no-underline tracking-tight" routerLink="{{isAuthenticated ? '/account' : '/login'}}">{{ isAuthenticated ? "Account" : "Login"}}</a>
 </div>
