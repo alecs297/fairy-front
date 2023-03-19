@@ -5,9 +5,9 @@
     </div>
     <ul class="w-full mt-12">
         <li class="my-4" *ngFor="let split of splits">
-            <a class="text-2xl lg:text-3xl tracking-tight" [routerLink]="['/dashboard', split._id]">{{split.name || "Untitled"}}</a>
-            <span class="ml-4 font-mono tracking-tighter">{{split.date | date}}</span>
-            <p>
+            <a class="text-3xl font-semibold lg:text-5xl tracking-tight" [routerLink]="['/dashboard', split._id]">{{split.name || "Untitled"}}</a>
+            <span class="ml-4 text-xl lg:text-2xl font-mono tracking-tighter">{{split.date | date}}</span>
+            <p class="w-full text-lg">
                 <span class="font-bold">{{split.users.length}}</span>
                  members, 
                 <span class="font-bold">{{split.transactions.length}}</span>

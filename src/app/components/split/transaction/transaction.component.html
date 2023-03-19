@@ -1,7 +1,7 @@
 <div class="w-full tracking-tighter">
     - <span class="font-semibold text-xl lg:text-2xl">{{transaction.payer}}</span>
     payed
-    <span class="font-bold text-text-secondary text-xl lg:text-2xl mx-1">{{transaction.amount}}€</span>
+    <span class="font-bold text-text-secondary text-xl lg:text-2xl mx-1">{{transaction.amount.toFixed(2)}}€</span>
     for
     <span class="font-semibold text-xl lg:text-2xl">{{transaction.name}}</span>
 </div>
