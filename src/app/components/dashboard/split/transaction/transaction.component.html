@@ -7,13 +7,13 @@
         </div>
         <span class="inline-block mx-2">payed</span>
         <div class="inline-block font-bold tracking-tighter mx-2">
-            <input (input)="updateTransaction()" formControlName="amount" class="w-[3em] inline py-2 outline-none rounded-none border-b-2 text-center appearance-none" placeholder="0.00" [(ngModel)]="transaction.amount" />
+            <input (change)="updateTransaction()" formControlName="amount" class="w-[3em] inline py-2 outline-none rounded-none border-b-2 text-center appearance-none" placeholder="0.00" [(ngModel)]="transaction.amount" />
             €
         </div>
         <div class="inline-block">
             <span class="inline-block mx-2">for</span>
             <div class="inline-block mx-2">
-                <input (input)="updateTransaction()" formControlName="name" class="py-2 outline-none rounded-none border-b-2 font-bold text-center" placeholder="something" [(ngModel)]="transaction.name" />
+                <input (change)="updateTransaction()" formControlName="name" class="py-2 outline-none rounded-none border-b-2 font-bold text-center" placeholder="something" [(ngModel)]="transaction.name" />
             </div>
         </div>
         <div class="inline-block">

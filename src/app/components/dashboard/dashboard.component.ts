@@ -4,6 +4,18 @@ import Split from 'src/app/models/split';
 import { AuthService } from 'src/app/services/auth.service';
 import { SplitService } from 'src/app/services/split.service';
 
+function reverseSort(array: Split[]): Split[] {
+  return array.sort((a, b) => {
+    if (a.date > b.date) {
+      return -1;
+    }
+    if (a.date < b.date) {
+      return 1;
+    }
+    return 0;
+  })
+}
+
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html'
@@ -20,7 +32,7 @@ export class DashboardComponent {
     }
     this.splitService.getSplits().subscribe({
       next: (splits) => {
-        this.splits = splits;
+        this.splits = reverseSort(splits)
       }
     });
   }
@@ -36,7 +48,7 @@ export class DashboardComponent {
   addSplit(): void {
     this.splitService.createSplit().subscribe({
       next: (split) => {
-        this.router.navigate(['/split', split._id]);
+        this.router.navigate(["/dashboard", split._id], );
       }
     })
   }

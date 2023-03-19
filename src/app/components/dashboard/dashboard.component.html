@@ -3,9 +3,17 @@
     <div (click)="addSplit()" class="inline-flex mx-4 align-sub">
         <span class="w-8 h-8 text-xl font-bold cursor-pointer text-bg-default hover:border bg-text-secondary hover:bg-bg-default hover:text-text-secondary rounded-full text-center">+</span>
     </div>
-    <ul>
-        <li *ngFor="let split of splits">
-            <a [routerLink]="['/dashboard', split._id]">{{split.name}}</a>
+    <ul class="w-full mt-12">
+        <li class="my-4" *ngFor="let split of splits">
+            <a class="text-2xl lg:text-3xl tracking-tight" [routerLink]="['/dashboard', split._id]">{{split.name || "Untitled"}}</a>
+            <span class="ml-4 font-mono tracking-tighter">{{split.date | date}}</span>
+            <p>
+                <span class="font-bold">{{split.users.length}}</span>
+                 members, 
+                <span class="font-bold">{{split.transactions.length}}</span>
+                 transactions
+                <a class="text-text-secondary font-bold cursor-pointer" (click)="deleteSplit(split._id)">Remove</a>
+            </p>
         </li>
     </ul>
 </div>

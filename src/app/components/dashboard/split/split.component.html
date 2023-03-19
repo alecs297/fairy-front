@@ -1,4 +1,4 @@
-<div *ngIf="split" class="w-fit max-w-full lg:max-w-3/5 mx-auto">
+<div *ngIf="split" class="w-fit max-w-full lg:max-w-4/5 mx-auto">
     <div class="w-full text-xl lg:text-2xl tracking-tight mb-24 my-4">
         <a routerLink=".." class="font-semibold text-text-secondary">◃ <span class="underline underline-offset-4">Back to the dashboard</span></a>
         <div class="float-right">
@@ -9,7 +9,7 @@
 
     <div class="w-full">
         <div class="w-full font-bold tracking-tighter py-2 text-3xl lg:text-5xl">
-            <input (input)="save()" class="my-2 py-2 px-2 outline-none border-b-2 rounded-none" placeholder="Title" [(ngModel)]="split.name" />
+            <input (change)="save()" class="my-2 py-2 px-2 outline-none border-b-2 rounded-none" placeholder="Title" [(ngModel)]="split.name" />
         </div>
         <div class="w-full py-4 px-2">
             <h2 class="font-bold tracking-tighter text-2xl lg:text-4xl">Members</h2>
