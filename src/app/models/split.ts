@@ -1,7 +1,7 @@
 import Transaction from "./transaction";
 
 export default interface Split {
-    id: string;
+    _id: string;
     name: string;
     date: Date;
     transactions: Transaction[]

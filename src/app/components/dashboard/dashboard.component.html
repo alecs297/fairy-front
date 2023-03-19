@@ -1,11 +1,11 @@
 <div class="w-full lg:w-1/2 mx-auto">
     <h1 class="text-3xl lg:text-5xl font-bold tracking-tighter inline-block align-middle">My Splits</h1>
-    <div class="inline-flex mx-4 align-sub">
+    <div (click)="addSplit()" class="inline-flex mx-4 align-sub">
         <span class="w-8 h-8 text-xl font-bold cursor-pointer text-bg-default hover:border bg-text-secondary hover:bg-bg-default hover:text-text-secondary rounded-full text-center">+</span>
     </div>
     <ul>
         <li *ngFor="let split of splits">
-            <a [routerLink]="['/dashboard', split.id]">{{split.name}}</a>
+            <a [routerLink]="['/dashboard', split._id]">{{split.name}}</a>
         </li>
     </ul>
 </div>

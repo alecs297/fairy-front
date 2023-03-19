@@ -101,7 +101,9 @@ export class PublicSplitComponent {
         }
       },
       x: {
-        display: false
+        display: false,
+        suggestedMin: -10,
+        suggestedMax: 10
       }
     },
     plugins: {
@@ -114,6 +116,7 @@ export class PublicSplitComponent {
       datalabels: {
         borderRadius: 5,
         borderColor: "black",
+        borderWidth: 1,
         backgroundColor: "white",
         padding: {
           top: 2,
@@ -154,7 +157,7 @@ export class PublicSplitComponent {
             datasets: [
               {
                 data: [...split.users, ].map(user => {
-                  return totalDebt[user]
+                  return totalDebt[user] || 0;
                 }),
                 backgroundColor: (ctx) => {
                   return totalDebt[split.users[ctx.dataIndex]] > 0 ? "#834694" : "#fd4929";
