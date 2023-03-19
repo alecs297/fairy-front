@@ -10,7 +10,7 @@ import { environment } from 'src/environments/environment';
 })
 export class SplitService {
 
-  private API_URL = environment.API_URL;
+  private API_URL = environment.API_URL + "splits";
   
   constructor(private http: HttpClient) { }
 
@@ -19,7 +19,7 @@ export class SplitService {
   }
 
   getSplit(id: string | null): Observable<Split> {
-    return this.http.get<Split>(`${this.API_URL}/splits/${id}`);
+    return this.http.get<Split>(`${this.API_URL}/${id}`);
   }
 
   createSplit(): Observable<Split> {
@@ -27,10 +27,10 @@ export class SplitService {
   }
 
   updateSplit(split: Split): Observable<Split> {
-    return this.http.put<Split>(`${this.API_URL}/splits/${split._id}`, split);
+    return this.http.put<Split>(`${this.API_URL}/${split._id}`, split);
   }
 
   deleteSplit(id: string): Observable<Split> {
-    return this.http.delete<Split>(`${this.API_URL}/splits/${id}`);
+    return this.http.delete<Split>(`${this.API_URL}/${id}`);
   }
 }
