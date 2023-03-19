@@ -4,7 +4,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "start-ssl": "ng serve -ssl true --sslKey ./keys/private.pem --sslCert ./keys/public.pem",
+    "start-ssl": "ng serve --proxy-config ./proxy.conf.json --ssl true --ssl-key ./keys/private.pem --ssl-cert ./keys/public.pem",
     "build": "ng build",
     "watch": "ng build --watch --configuration development"
   },
