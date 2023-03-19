@@ -1,19 +1,25 @@
 <div class="w-fit max-w-full lg:max-w-3/5 mx-auto">
-    <a routerLink=".." class="text-xl lg:text-2xl font-semibold text-text-secondary tracking-tighter">◃ <span class="underline underline-offset-4">Back to the dashboard</span></a>
+    <div class="w-full text-xl lg:text-2xl tracking-tight mb-24 my-4">
+        <a routerLink=".." class="font-semibold text-text-secondary">◃ <span class="underline underline-offset-4">Back to the dashboard</span></a>
+        <div class="float-right">
+            <span class="block">created on {{split?.date | date}}</span>
+            <a class="text-text-tertiary float-right font-bold text-2xl lg:text-3xl px-3 rounded-tl-md rounded-br-md underline underline-offset-8 hover:bg-text-tertiary hover:text-bg-default hover:no-underline" [routerLink]="['/splits', split?.id]">Go to Results</a>
+        </div>
+    </div>
+
     <div class="w-full">
         <div class="w-full font-bold tracking-tighter py-2 text-3xl lg:text-5xl">
-            <input class="my-2 py-2 px-2 outline-none border-b-2" placeholder="Title" [value]="split?.name" />
+            <input class="my-2 py-2 px-2 outline-none border-b-2 rounded-none" placeholder="Title" [value]="split?.name" />
         </div>
         <div class="w-full py-4 px-2">
             <h2 class="font-bold tracking-tighter text-2xl lg:text-4xl">Members</h2>
             <ul class="px-2 py-2 text-2xl tracking-tight">
-                <input class="w-full lg:w-1/3 cursor-not-allowed py-1 outline-none hover:font-semibold focus:font-semibold border-b border-b-bg-default focus:border-b-text-default" disabled [value]="user?.name + ' (You)'" />
                 <li class="w-full hover:font-semibold" *ngFor="let user of split?.users; let i = index">
-                    <input disabled class="w-1/2 py-1 inline-block outline-none hover:font-semibold border-b border-b-bg-default focus:border-b-text-default" [value]="user" />
+                    <input disabled class="w-1/2 py-1 inline-block outline-none hover:font-semibold" [value]="user" />
                     <span (click)="deleteMember(i)" class="text-text-secondary cursor-pointer">Remove</span>
                 </li>
                 <li>
-                    <input (keyup.enter)="addMember()" [formControl]="newMember" placeholder="New member" class="w-full lg:w-1/3 py-1 outline-none border-b border-b-bg-default focus:border-b-text-default placeholder:tracking-tight"/>
+                    <input (keyup.enter)="addMember()" [formControl]="newMember" placeholder="New member" class="w-full rounded-none lg:w-1/3 py-1 outline-none border-b border-b-bg-default focus:border-b-text-default placeholder:tracking-tight"/>
                 </li>
             </ul>
         </div>

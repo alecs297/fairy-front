@@ -2,19 +2,18 @@
     <form [formGroup]="transactionForm" class="w-full py-2 text-md lg:text-xl">
         <div class="inline-block mx-2">
             <select (change)="updateTransaction()" [(ngModel)]="transaction.payer" formControlName="payer" class="py-2 px-4 outline-none border-b-2 font-bold text-center rounded-none appearance-none">
-                <option [ngValue]="user?.name">{{user?.name}}</option>
                 <option *ngFor="let user of users" [ngValue]="user">{{user}}</option>
             </select>
         </div>
         <span class="inline-block mx-2">payed</span>
         <div class="inline-block font-bold tracking-tighter mx-2">
-            <input (input)="updateTransaction()" formControlName="amount" class="w-[3em] inline py-2 outline-none border-b-2 text-center appearance-none" placeholder="0.00" [(ngModel)]="transaction.amount" />
+            <input (input)="updateTransaction()" formControlName="amount" class="w-[3em] inline py-2 outline-none rounded-none border-b-2 text-center appearance-none" placeholder="0.00" [(ngModel)]="transaction.amount" />
             €
         </div>
         <div class="inline-block">
             <span class="inline-block mx-2">for</span>
             <div class="inline-block mx-2">
-                <input (input)="updateTransaction()" formControlName="name" class="py-2 outline-none border-b-2 font-bold text-center" placeholder="something" [(ngModel)]="transaction.name" />
+                <input (input)="updateTransaction()" formControlName="name" class="py-2 outline-none rounded-none border-b-2 font-bold text-center" placeholder="something" [(ngModel)]="transaction.name" />
             </div>
         </div>
         <div class="inline-block">
