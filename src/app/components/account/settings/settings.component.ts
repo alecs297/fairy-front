@@ -19,8 +19,15 @@ export class SettingsComponent {
 
   changePassword(): void {
     const creds = this.settingsForm.value;
-    let message: string | null = this.authService.changePassword(creds.password || "", creds.newPassword || "");
-    this.message = message || "Password changed successfully.";
+    this.authService.changePassword(creds.password || "", creds.newPassword || "").subscribe(
+      (data) => {
+        if (data.message) {
+          this.message = data.message;
+        } else {
+          this.message = "Password changed successfully.";
+          this.settingsForm.reset();
+        }
+      });
   }
 
   logout(): void {

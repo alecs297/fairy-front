@@ -45,8 +45,8 @@ export class AuthService {
     return this.http.post<HTTPResponse>(this.API_URL + 'register', {username,name, password});
   }
 
-  public changePassword(password: string, newPassword: string): string | null {
-    return null;
+  public changePassword(password: string, newPassword: string): Observable<HTTPResponse> {
+    return this.http.post<HTTPResponse>(this.API_URL + 'password', {password, newPassword});
   }
 
   public logout(): void {
