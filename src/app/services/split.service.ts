@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import Split from '../models/split';
 
 @Injectable({
@@ -16,7 +16,40 @@ export class SplitService {
     return this.http.get<Split[]>(this.API_URL);
   }
 
-  getSplit(id: string): Observable<Split> {
+  getSplit(id: string | null): Observable<Split> {
+    return of({
+      id: "1",
+      name: 'Split 1',
+      url: 'https://www.google.com',
+      date: new Date(),
+      transactions: [
+        {
+          name: "bière",
+          amount: 10,
+          payer: "@moi"
+        },
+        {
+          name: "bière",
+          amount: 10,
+          payer: "@moi"
+        },
+        {
+          name: "bière",
+          amount: 10,
+          payer: "@moi"
+        },
+        {
+          name: "bière",
+          amount: 10,
+          payer: "@moi"
+        }
+      ],
+      users: [
+        "Alex",
+        "Connard 2",
+        "Connard 3"
+      ]
+    })
     return this.http.get<Split>(`${this.API_URL}/${id}`);
   }
 
