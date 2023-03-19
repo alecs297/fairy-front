@@ -1,22 +1,22 @@
 import { Injectable } from '@angular/core';
 import User from '../models/user';
 import { HttpClient } from '@angular/common/http';
-import { Router } from '@angular/router';
 import { HTTPResponse } from '../models/http';
 
 import jwt_decode from 'jwt-decode';
 import { Observable } from 'rxjs';
+
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  private API_URL = 'http://localhost:3000/api/v1/';
+  private API_URL = environment.API_URL;
 
   constructor(
-    private http: HttpClient, 
-    private router: Router
+    private http: HttpClient
   ) { }
 
   public isAuthenticated(): boolean {
