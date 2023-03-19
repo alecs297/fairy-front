@@ -22,8 +22,7 @@ export class AuthService {
   public getUser(): User | null {
     return {
       username: 'test',
-      name: 'Test User',
-      badges: []
+      name: 'Test User'
     };
   }
 
