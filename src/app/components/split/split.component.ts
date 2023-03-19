@@ -11,18 +11,18 @@ import DataLabelsPlugin from 'chartjs-plugin-datalabels';
 function calculateDebt(split: Split): { from: string, to: string, amount: number }[] {
   const debts: { [key: string]: number } = {};
 
-  // compute individual debts between each user
+  // compute individual debts
   split.transactions.forEach(transaction => {
     const amountPerUser = transaction.amount / split.users.length;
     split.users.forEach(user => {
       if (user !== transaction.payer) {
-        const key = JSON.stringify({ from: transaction.payer, to: user }); // use a JSON object as a key to keep track of debts between specific users
+        const key = JSON.stringify({ from: transaction.payer, to: user });
         debts[key] = (debts[key] || 0) + amountPerUser;
       }
     });
   });
 
-  // simplify debts between pairs of users in both directions
+  // simplify debts
   Object.entries(debts).forEach(([key, value]) => {
     const { from, to } = JSON.parse(key);
     const reverseKey = JSON.stringify({ from: to, to: from });
