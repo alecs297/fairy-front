@@ -13,13 +13,17 @@ export class SettingsComponent {
     newPassword: new FormControl('')
   })
 
-  constructor(private AuthService: AuthService) {}
+  constructor(private authService: AuthService) {}
 
   message: string | null = null;
 
   changePassword(): void {
     const creds = this.settingsForm.value;
-    let message: string | null = this.AuthService.changePassword(creds.password || "", creds.newPassword || "");
+    let message: string | null = this.authService.changePassword(creds.password || "", creds.newPassword || "");
     this.message = message || "Password changed successfully.";
+  }
+
+  logout(): void {
+    this.authService.logout();
   }
 }
