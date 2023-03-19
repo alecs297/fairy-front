@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 import { SplitService } from 'src/app/services/split.service';
 import User from 'src/app/models/user';
@@ -32,37 +32,50 @@ function getOgName(name: string, users: string[]): string {
 })
 export class SplitComponent {
 
-  user: User | null = null;
-  split: Split | null = null;
+  user!: User;
+  split!: Split;
 
   newMember: FormControl = new FormControl('')
 
   constructor(
     private route: ActivatedRoute,
-    private AuthService: AuthService,
-    private SplitService: SplitService
+    private router: Router,
+    private authService: AuthService,
+    private splitService: SplitService
   ) {}
 
   ngOnInit() {
     this.route.paramMap.subscribe(params => {
-      this.user = this.AuthService.getUser();
+      let currentUser = this.authService.getUser();
+      if (!currentUser) {
+        this.router.navigate(['/login']);
+      } else {
+        this.user = currentUser;
 
-      this.SplitService.getSplit(params.get('id') || "").subscribe({
-        next: (split) => {
-          this.split = split;
-        }
-      });
+        this.splitService.getSplit(params.get('id') || "").subscribe({
+          next: (split) => {
+            if (split) this.split = split;
+            else this.router.navigate(['/dashboard']);
+          }
+        });
+      }
     });
   }
 
   save(): void {
-    if (this.split) this.SplitService.updateSplit(this.split);
+    if (this.split) this.splitService.updateSplit(this.split).subscribe(
+      (split) => {
+        this.split = split;
+      },
+    );
   }
 
   addMember(): void {
-    let name: string = this.newMember.value;
-    this.split?.users.push(getOgName(name, this.split.users))
+    let name: string = getOgName(this.newMember.value, this.split.users);
+    if (name === "") return;
+    this.split?.users.push(name)
     this.newMember.reset()
+    this.save();
   }
 
   deleteMember(index: number): void {
@@ -70,22 +83,21 @@ export class SplitComponent {
       let user = this.split.users[index];
       this.split.transactions = this.split.transactions.filter(transaction => transaction.payer !== user);
       this.split.users.splice(index, 1);
-    }
-  }
-
-  updateTransaction(): void {
-    if (this.split) {
-      this.SplitService.updateSplit(this.split);
       this.save();
     }
   }
 
+  updateTransaction(): void {
+    this.save();
+  }
+
   addTransaction(): void {
     if (this.split) {
+      if (!this.split.users.length) return alert("You need to add at least one member first");
       this.split.transactions.push({
         name: `Item ${this.split.transactions.length + 1}`,
         amount: 0,
-        payer: this.user?.name || ""
+        payer: this.split.users[0]
       })
       this.save()
     } 

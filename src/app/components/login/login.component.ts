@@ -23,13 +23,25 @@ export class LoginComponent {
     private router: Router
   ) {}
 
-  async login(): Promise<void> {
-    const creds = this.loginForm.value;
-    let message: string | null = this.authService.login(creds.username || "", creds.password || "");
-    if (message) {
-      this.errorMessage = message;
-    } else {
+  ngOnInit(): void {
+    if (this.authService.isAuthenticated()) {
       this.router.navigate(['/dashboard']);
     }
+  }
+
+  async login(): Promise<void> {
+    const creds = this.loginForm.value;
+    this.authService.login(creds.username || "", creds.password || "").subscribe(
+      (data) => {
+        if (data.message) {
+          this.errorMessage = data.message;
+        } else {
+          if (data.token) {
+            localStorage.setItem('token', data.token);
+          }
+          window.location.href = '/dashboard';
+        }
+      }
+    )
   }
 }

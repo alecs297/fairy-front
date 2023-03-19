@@ -17,17 +17,29 @@ export class RegisterComponent {
   constructor(
     private authService: AuthService,
     private router: Router
-  ) { }
+  ) {}
+
+  ngOnInit(): void {
+    if (this.authService.isAuthenticated()) {
+      this.router.navigate(['/dashboard']);
+    }
+  }
 
   errorMessage: string | null = null;
 
   async register(): Promise<void> {
     const creds = this.registerForm.value;
-    let message: string | null = await this.authService.register(creds.username || "", creds.name || "", creds.password || "");
-    if (message) {
-      this.errorMessage = message;
-    } else {
-      this.router.navigate(['/dashboard']);
-    }
+    this.authService.register(creds.username || "", creds.name || "", creds.password || "").subscribe(
+      (data) => {
+        if (data.message) {
+          this.errorMessage = data.message;
+        } else {
+          if (data.token) {
+            localStorage.setItem('token', data.token);
+          }
+          window.location.href = '/dashboard';
+        }
+      }
+    )
   }
 }

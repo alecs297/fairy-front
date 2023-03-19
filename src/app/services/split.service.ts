@@ -17,49 +17,15 @@ export class SplitService {
   }
 
   getSplit(id: string | null): Observable<Split> {
-    return of({
-      id: "1",
-      name: 'Split 1',
-      url: 'https://www.google.com',
-      date: new Date(),
-      transactions: [
-        {
-          name: "bière",
-          amount: 10,
-          payer: "Alex"
-        },
-        {
-          name: "bière",
-          amount: 10,
-          payer: "Alex"
-        },
-        {
-          name: "bière",
-          amount: 10,
-          payer: "Connard 2"
-        },
-        {
-          name: "bière",
-          amount: 10,
-          payer: "Connard 3"
-        }
-      ],
-      users: [
-        "Alex",
-        "Connard 2",
-        "Connard 3",
-        "Loic"
-      ]
-    })
     return this.http.get<Split>(`${this.API_URL}/${id}`);
   }
 
-  createSplit(split: Split): Observable<Split> {
-    return this.http.post<Split>(this.API_URL, split);
+  createSplit(): Observable<Split> {
+    return this.http.post<Split>(this.API_URL, {});
   }
 
   updateSplit(split: Split): Observable<Split> {
-    return this.http.put<Split>(`${this.API_URL}/${split.id}`, split);
+    return this.http.put<Split>(`${this.API_URL}/${split._id}`, split);
   }
 
   deleteSplit(id: string): Observable<Split> {

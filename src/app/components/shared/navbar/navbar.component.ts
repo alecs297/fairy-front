@@ -8,9 +8,9 @@ import { AuthService } from 'src/app/services/auth.service';
 export class NavbarComponent {
   isAuthenticated: boolean = false;
 
-  constructor(private AuthService: AuthService) {}
+  constructor(private authService: AuthService) {}
 
   ngOnInit(): void {
-    this.isAuthenticated = this.AuthService.isAuthenticated();
+    this.isAuthenticated = this.authService.isAuthenticated();
   }
 }

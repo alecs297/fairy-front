@@ -7,10 +7,10 @@ import { AuthService } from 'src/app/services/auth.service';
   templateUrl: './account.component.html'
 })
 export class AccountComponent {
-  constructor(private AuthService: AuthService, private router: Router) { }
+  constructor(private authService: AuthService, private router: Router) { }
 
   ngOnInit(): void {
-    if (!this.AuthService.isAuthenticated()) {
+    if (!this.authService.isAuthenticated()) {
       this.router.navigate(['/login']);
     }
   }

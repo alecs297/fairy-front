@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import Split from 'src/app/models/split';
+import { AuthService } from 'src/app/services/auth.service';
 import { SplitService } from 'src/app/services/split.service';
 
 @Component({
@@ -9,10 +11,14 @@ import { SplitService } from 'src/app/services/split.service';
 export class DashboardComponent {
   splits: Split[] = []
 
-  constructor(private SplitService: SplitService) {}
+  constructor(private splitService: SplitService, private authService: AuthService, private router: Router) {}
 
   ngOnInit(): void {
-    this.SplitService.getSplits().subscribe({
+    if (!this.authService.isAuthenticated()) {
+      this.router.navigate(['/login']);
+      return;
+    }
+    this.splitService.getSplits().subscribe({
       next: (splits) => {
         this.splits = splits;
       }
@@ -20,10 +26,18 @@ export class DashboardComponent {
   }
 
   deleteSplit(id: string): void {
-    this.SplitService.deleteSplit(id).subscribe({
+    this.splitService.deleteSplit(id).subscribe({
       next: () => {
-        this.splits = this.splits.filter(s => s.id !== id);
+        this.splits = this.splits.filter(s => s._id !== id);
       }
     });
+  }
+
+  addSplit(): void {
+    this.splitService.createSplit().subscribe({
+      next: (split) => {
+        this.router.navigate(['/split', split._id]);
+      }
+    })
   }
 }

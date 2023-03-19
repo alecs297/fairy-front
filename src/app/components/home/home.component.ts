@@ -6,11 +6,11 @@ import { AuthService } from 'src/app/services/auth.service';
   templateUrl: './home.component.html'
 })
 export class HomeComponent {
-  constructor(private AuthService: AuthService) {}
+  constructor(private authService: AuthService) {}
 
   isAuthenticated: boolean = false;
 
   ngOnInit(): void {
-    this.isAuthenticated = this.AuthService.isAuthenticated()
+    this.isAuthenticated = this.authService.isAuthenticated()
   }
 }
