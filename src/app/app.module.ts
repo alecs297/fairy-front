@@ -18,8 +18,11 @@ import { SplitComponent } from './components/dashboard/split/split.component';
 import { HomeComponent } from './components/home/home.component';
 import { TransactionComponent } from './components/dashboard/split/transaction/transaction.component';
 import { AuthService } from './services/auth.service';
-import { HttpService } from './services/http.service';
 import { InterceptorService } from './services/interceptor.service';
+import { PublicSplitComponent } from './components/split/split.component';
+import { DebtComponent } from './components/split/debt/debt.component';
+import { NgChartsModule } from 'ng2-charts';
+import { PublicTransactionComponent } from './components/split/transaction/transaction.component';
 
 @NgModule({
   declarations: [
@@ -34,16 +37,20 @@ import { InterceptorService } from './services/interceptor.service';
     DashboardComponent,
     SplitComponent,
     HomeComponent,
-    TransactionComponent
+    TransactionComponent,
+    PublicSplitComponent,
+    PublicTransactionComponent,
+    DebtComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    NgChartsModule
   ],
   providers: [
-    AuthService, HttpService, {
+    AuthService, {
       provide: HTTP_INTERCEPTORS,
       useClass: InterceptorService, 
       multi: true

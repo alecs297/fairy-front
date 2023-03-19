@@ -32,7 +32,6 @@ function getOgName(name: string, users: string[]): string {
 })
 export class SplitComponent {
 
-  splitId: string | null = null;
   user: User | null = null;
   split: Split | null = null;
 
@@ -46,10 +45,9 @@ export class SplitComponent {
 
   ngOnInit() {
     this.route.paramMap.subscribe(params => {
-      this.splitId = params.get('id');
       this.user = this.AuthService.getUser();
 
-      this.SplitService.getSplit(this.splitId || "").subscribe({
+      this.SplitService.getSplit(params.get('id') || "").subscribe({
         next: (split) => {
           this.split = split;
         }

@@ -6,6 +6,7 @@ import { SplitComponent } from './components/dashboard/split/split.component';
 import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
+import { PublicSplitComponent } from './components/split/split.component';
 
 const routes: Routes = [
   {
@@ -31,6 +32,10 @@ const routes: Routes = [
   {
     path: 'dashboard/:id',
     component: SplitComponent
+  },
+  {
+    path: 'splits/:id',
+    component: PublicSplitComponent
   },
   {
     path: '**',

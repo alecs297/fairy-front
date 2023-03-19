@@ -26,28 +26,29 @@ export class SplitService {
         {
           name: "bière",
           amount: 10,
-          payer: "@moi"
+          payer: "Alex"
         },
         {
           name: "bière",
           amount: 10,
-          payer: "@moi"
+          payer: "Alex"
         },
         {
           name: "bière",
           amount: 10,
-          payer: "@moi"
+          payer: "Connard 2"
         },
         {
           name: "bière",
           amount: 10,
-          payer: "@moi"
+          payer: "Connard 3"
         }
       ],
       users: [
         "Alex",
         "Connard 2",
-        "Connard 3"
+        "Connard 3",
+        "Loic"
       ]
     })
     return this.http.get<Split>(`${this.API_URL}/${id}`);
