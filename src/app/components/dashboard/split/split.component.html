@@ -1,21 +1,21 @@
-<div class="w-fit max-w-full lg:max-w-3/5 mx-auto">
+<div *ngIf="split" class="w-fit max-w-full lg:max-w-3/5 mx-auto">
     <div class="w-full text-xl lg:text-2xl tracking-tight mb-24 my-4">
         <a routerLink=".." class="font-semibold text-text-secondary">◃ <span class="underline underline-offset-4">Back to the dashboard</span></a>
         <div class="float-right">
-            <span class="block">created on {{split?.date | date}}</span>
-            <a class="text-text-tertiary float-right font-bold text-2xl lg:text-3xl px-3 rounded-tl-md rounded-br-md underline underline-offset-8 hover:bg-text-tertiary hover:text-bg-default hover:no-underline" [routerLink]="['/splits', split?.id]">Go to Results</a>
+            <span class="block">created on {{split.date | date}}</span>
+            <a class="text-text-tertiary float-right font-bold text-2xl lg:text-3xl px-3 rounded-tl-md rounded-br-md underline underline-offset-8 hover:bg-text-tertiary hover:text-bg-default hover:no-underline" [routerLink]="['/splits', split._id]">Go to Results</a>
         </div>
     </div>
 
     <div class="w-full">
         <div class="w-full font-bold tracking-tighter py-2 text-3xl lg:text-5xl">
-            <input class="my-2 py-2 px-2 outline-none border-b-2 rounded-none" placeholder="Title" [value]="split?.name" />
+            <input (input)="save()" class="my-2 py-2 px-2 outline-none border-b-2 rounded-none" placeholder="Title" [(ngModel)]="split.name" />
         </div>
         <div class="w-full py-4 px-2">
             <h2 class="font-bold tracking-tighter text-2xl lg:text-4xl">Members</h2>
             <ul class="px-2 py-2 text-2xl tracking-tight">
                 <li class="w-full hover:font-semibold" *ngFor="let user of split?.users; let i = index">
-                    <input disabled class="w-1/2 py-1 inline-block outline-none hover:font-semibold" [value]="user" />
+                    <p class="w-1/2 py-1 inline-block outline-none disabled:appearance-none hover:font-semibold">{{user}}</p>
                     <span (click)="deleteMember(i)" class="text-text-secondary cursor-pointer">Remove</span>
                 </li>
                 <li>
@@ -29,8 +29,8 @@
                 <span class="w-6 h-6 text-md font-bold cursor-pointer text-bg-default hover:border bg-text-secondary hover:bg-bg-default hover:text-text-secondary rounded-full text-center">+</span>
             </div>
             <ul>
-                <li *ngFor="let transaction of split?.transactions; let i = index">
-                    <app-transaction [users]="split?.users || []" [index]="i" (delete)="deleteTransaction($event)" (update)="updateTransaction()" [transaction]="transaction"></app-transaction>
+                <li *ngFor="let transaction of split.transactions; let i = index">
+                    <app-transaction [users]="split.users || []" [index]="i" (delete)="deleteTransaction($event)" (update)="updateTransaction()" [transaction]="transaction"></app-transaction>
                 </li>
             </ul>
         </div>

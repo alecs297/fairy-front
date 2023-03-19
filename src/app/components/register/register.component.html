@@ -6,15 +6,15 @@
         <form class="w-full py-2" [formGroup]="registerForm" (ngSubmit)="register()">
             <label class="block w-full py-3">
                 <span class="font-semibold text-xl lg:text-2xl">Username</span>
-                <input class="text-xl lg:text-2xl block w-full border rounded-md border-text-default" type="text" formControlName="username"/>
+                <input class="px-4 text-xl lg:text-2xl block w-full border rounded-md border-text-default" type="text" formControlName="username"/>
             </label>
             <label class="block w-full py-3">
                 <span class="font-semibold text-xl lg:text-2xl">Name</span>
-                <input class="text-xl lg:text-2xl block w-full border rounded-md border-text-default" type="text" formControlName="name"/>
+                <input class="px-4 text-xl lg:text-2xl block w-full border rounded-md border-text-default" type="text" formControlName="name"/>
             </label>
             <label class="block w-full py-3">
                 <span class="font-semibold text-xl lg:text-2xl">Password</span>
-                <input class="text-xl lg:text-2xl block w-full border rounded-md border-text-default" type="pasword" formControlName="password"/>
+                <input type="password" class="px-4 text-xl lg:text-2xl block w-full border rounded-md border-text-default" formControlName="password"/>
             </label>
             <button class="w-full text-xl lg:text-2xl text-bg-default bg-text-tertiary font-bold py-2 rounded-md" type="submit">Register</button>
             <p class="text-text-secondary" *ngIf="errorMessage">{{errorMessage}}</p>
